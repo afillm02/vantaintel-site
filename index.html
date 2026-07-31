@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vanta Intelligence — See Everything. Miss Nothing.</title>
+<meta name="description" content="Defense market intelligence for GovCon. AI-maintained, community-validated capability intelligence across the defense industrial base.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0D1117;
+  --bg-raised:#11161e;
+  --gold:#C8A951;
+  --gold-dim:rgba(200,169,81,0.3);
+  --gold-faint:rgba(200,169,81,0.08);
+  --text:#C8CDD8;
+  --muted:rgba(255,255,255,0.5);
+  --faint:rgba(255,255,255,0.28);
+  --border:rgba(255,255,255,0.06);
+  --green:#22c55e;
+  --mono:'IBM Plex Mono',monospace;
+  --serif:'Playfair Display',serif;
+  --body:'Lato',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--gold);color:var(--bg)}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase}
+.rule{height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);margin:14px 0 28px;max-width:220px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,17,23,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.wordmark{font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:0.28em;color:#fff}
+.wordmark .v{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.btn{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:0.14em;padding:12px 26px;border:1px solid var(--gold);color:var(--gold);transition:all .25s;text-transform:uppercase}
+.btn:hover{background:var(--gold);color:var(--bg)}
+.btn.solid{background:var(--gold);color:var(--bg)}
+.btn.solid:hover{background:#d9bc6a;border-color:#d9bc6a}
+.nav-links .btn{padding:9px 18px}
+@media(max-width:760px){.nav-links a:not(.btn){display:none}}
+
+header{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:120px 0 80px}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(200,169,81,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(200,169,81,0.035) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,black 30%,transparent 75%)}
+.sweep{position:absolute;inset:-40%;background:conic-gradient(from 0deg,transparent 0deg,transparent 340deg,rgba(200,169,81,0.06) 355deg,rgba(200,169,81,0.10) 360deg);animation:sweep 14s linear infinite;pointer-events:none}
+@keyframes sweep{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.sweep{animation:none;opacity:0}.reveal{opacity:1!important;transform:none!important}.tick span{animation:none!important}}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center;width:100%}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(42px,6vw,76px);line-height:1.06;color:#fff;letter-spacing:-0.01em}
+h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{margin-top:26px;font-size:17px;max-width:520px;color:var(--muted)}
+.hero-ctas{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap}
+.hero-note{margin-top:22px;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;color:var(--faint)}
+.hero-note .dot{color:var(--green)}
+
+.readout{border:1px solid var(--border);background:var(--bg-raised);padding:22px 24px;font-family:var(--mono);font-size:11.5px;letter-spacing:0.04em}
+.readout-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:12px;margin-bottom:14px;color:var(--faint);font-size:10px;letter-spacing:0.2em}
+.readout-head .live{color:var(--green)}
+.sig{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.03);align-items:baseline}
+.sig:last-child{border-bottom:none}
+.sig .tag{font-size:9px;letter-spacing:0.12em;padding:2px 7px;white-space:nowrap}
+.tag.ma{color:var(--gold);border:1px solid var(--gold-dim)}
+.tag.contract{color:#60a5fa;border:1px solid rgba(96,165,250,0.3)}
+.tag.hire{color:var(--green);border:1px solid rgba(34,197,94,0.3)}
+.tag.sol{color:#c084fc;border:1px solid rgba(192,132,252,0.3)}
+.sig .txt{color:var(--muted);line-height:1.5}
+.sig .txt b{color:var(--text);font-weight:500}
+@media(max-width:900px){.readout{max-width:520px}}
+
+.statbar{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-raised)}
+.statbar-inner{display:grid;grid-template-columns:repeat(4,1fr)}
+@media(max-width:760px){.statbar-inner{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:34px 24px;border-right:1px solid var(--border);text-align:center}
+.stat:last-child{border-right:none}
+@media(max-width:760px){.stat:nth-child(2){border-right:none}.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--border)}}
+.stat .num{font-family:var(--serif);font-size:38px;color:#fff;font-weight:600}
+.stat .num span{color:var(--gold)}
+.stat .lab{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;color:var(--faint);margin-top:6px;text-transform:uppercase}
+
+section{padding:110px 0}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4vw,46px);color:#fff;line-height:1.15;max-width:640px}
+h2 em{font-style:italic;color:var(--gold)}
+.lede{margin-top:20px;font-size:16.5px;color:var(--muted);max-width:600px}
+
+.atlas-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;margin-top:60px}
+@media(max-width:860px){.atlas-grid{grid-template-columns:1fr}}
+.domain-list{border:1px solid var(--border);background:var(--bg-raised)}
+.domain{display:flex;align-items:center;gap:16px;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,0.04);font-family:var(--mono);font-size:12px}
+.domain:last-child{border-bottom:none}
+.domain .name{width:170px;color:var(--text);letter-spacing:0.05em;flex-shrink:0}
+.domain .bar{flex:1;height:4px;background:rgba(255,255,255,0.05);position:relative;overflow:hidden}
+.domain .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--gold);opacity:.75;width:0;transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
+.domain .ct{width:42px;text-align:right;color:var(--faint);font-size:11px}
+.pillars{display:flex;flex-direction:column;gap:0;border-left:1px solid var(--gold-dim)}
+.pillar{padding:22px 0 22px 28px;border-bottom:1px solid var(--border)}
+.pillar:last-child{border-bottom:none}
+.pillar .k{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase}
+.pillar p{margin-top:8px;font-size:14.5px;color:var(--muted)}
+
+.nodes{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:60px}
+@media(max-width:860px){.nodes{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.nodes{grid-template-columns:1fr}}
+.node{background:var(--bg);padding:34px 28px;transition:background .3s;position:relative}
+.node:hover{background:var(--gold-faint)}
+.node .id{font-family:var(--mono);font-size:11px;letter-spacing:0.24em;color:var(--gold)}
+.node h3{font-family:var(--serif);font-size:21px;color:#fff;font-weight:600;margin-top:10px}
+.node p{margin-top:10px;font-size:14px;color:var(--muted)}
+
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:60px}
+@media(max-width:1000px){.tiers{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.tiers{grid-template-columns:1fr}}
+.tier{border:1px solid var(--border);background:var(--bg-raised);padding:34px 28px;display:flex;flex-direction:column;transition:border-color .25s}
+.tier:hover{border-color:var(--gold-dim)}
+.tier.feature{border-color:var(--gold-dim);background:linear-gradient(180deg,var(--gold-faint),var(--bg-raised) 55%)}
+.tier .tn{font-family:var(--mono);font-size:12px;letter-spacing:0.24em;color:var(--gold);text-transform:uppercase}
+.tier .price{font-family:var(--serif);font-size:36px;color:#fff;margin-top:16px;font-weight:600}
+.tier .per{font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:0.14em}
+.tier ul{list-style:none;margin:22px 0 30px;flex:1}
+.tier li{font-size:13.5px;color:var(--muted);padding:7px 0 7px 20px;position:relative;border-bottom:1px solid rgba(255,255,255,0.04)}
+.tier li:last-child{border-bottom:none}
+.tier li::before{content:"—";position:absolute;left:0;color:var(--gold);opacity:.7}
+.tier .btn{text-align:center}
+.annual-note{margin-top:26px;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;color:var(--faint);text-align:center}
+
+.cta{border-top:1px solid var(--border);background:radial-gradient(ellipse 60% 90% at 50% 110%,rgba(200,169,81,0.07),transparent);text-align:center}
+.cta h2{margin:0 auto}
+.cta .hero-ctas{justify-content:center}
+
+footer{border-top:1px solid var(--border);padding:44px 0;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;color:var(--faint)}
+.foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.foot-inner a:hover{color:var(--gold)}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#top" class="wordmark"><span class="v">VANTA</span>&nbsp;INTELLIGENCE</a>
+    <div class="nav-links">
+      <a href="#atlas">ATLAS</a>
+      <a href="#platform">PLATFORM</a>
+      <a href="#pricing">PRICING</a>
+      <a class="btn" href="https://app.vantaintel.ai">SIGN IN</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="grid-bg"></div>
+  <div class="sweep"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow">// Defense Market Intelligence</div>
+      <div class="rule"></div>
+      <h1>See everything.<br><em>Miss nothing.</em></h1>
+      <p class="hero-sub">Vanta is the intelligence layer for the defense industrial base — a living map of who builds what, who owns whom, and what's moving in your market, before it hits your competitors' radar.</p>
+      <div class="hero-ctas">
+        <a class="btn solid" href="#pricing">Request Access</a>
+        <a class="btn" href="#atlas">Explore ATLAS</a>
+      </div>
+      <p class="hero-note"><span class="dot">●</span>&nbsp; LIVE — MONITORING THE DIB 24/7</p>
+    </div>
+    <div class="readout reveal">
+      <div class="readout-head"><span>SIGNAL FEED</span><span class="live">● LIVE</span></div>
+      <div class="sig"><span class="tag contract">CONTRACT</span><span class="txt"><b>$1.2B IDIQ</b> awarded — tactical missile propulsion, second source qualified</span></div>
+      <div class="sig"><span class="tag ma">M&amp;A</span><span class="txt">PE-backed roll-up acquires <b>precision machining supplier</b> — ownership tree updated</span></div>
+      <div class="sig"><span class="tag hire">HIRE</span><span class="txt">Former PEO official joins <b>mid-tier prime</b> as VP, Strategy</span></div>
+      <div class="sig"><span class="tag sol">SOLICITATION</span><span class="txt">Draft RFP posted — <b>155mm energetics</b> capacity expansion</span></div>
+      <div class="sig"><span class="tag contract">CONTRACT</span><span class="txt">Capability record verified — <b>confidence score</b> compounding</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="statbar">
+  <div class="wrap statbar-inner">
+    <div class="stat reveal"><div class="num">1,068<span>+</span></div><div class="lab">Capability Records</div></div>
+    <div class="stat reveal"><div class="num">137<span>+</span></div><div class="lab">Companies Mapped</div></div>
+    <div class="stat reveal"><div class="num">11</div><div class="lab">Capability Domains</div></div>
+    <div class="stat reveal"><div class="num">24<span>/7</span></div><div class="lab">AI-Maintained</div></div>
+  </div>
+</div>
+
+<section id="atlas">
+  <div class="wrap">
+    <div class="eyebrow">// ATLAS — The Capability Registry</div>
+    <div class="rule"></div>
+    <h2>The defense capability database that <em>doesn't exist</em> anywhere else.</h2>
+    <p class="lede">Static directories go stale the day they're published. ATLAS is different: a structured registry of defense capabilities — ownership-mapped, contract-verified, maintained by AI, and validated by the practitioners who actually work in this market.</p>
+    <div class="atlas-grid">
+      <div class="domain-list reveal">
+        <div class="domain"><span class="name">MISSILES &amp; MUNITIONS</span><span class="bar"><i data-w="100"></i></span><span class="ct">261</span></div>
+        <div class="domain"><span class="name">C4ISR</span><span class="bar"><i data-w="63"></i></span><span class="ct">164</span></div>
+        <div class="domain"><span class="name">AVIATION</span><span class="bar"><i data-w="56"></i></span><span class="ct">146</span></div>
+        <div class="domain"><span class="name">LAND SYSTEMS</span><span class="bar"><i data-w="48"></i></span><span class="ct">124</span></div>
+        <div class="domain"><span class="name">SERVICES</span><span class="bar"><i data-w="31"></i></span><span class="ct">80</span></div>
+        <div class="domain"><span class="name">NAVAL</span><span class="bar"><i data-w="27"></i></span><span class="ct">70</span></div>
+        <div class="domain"><span class="name">CYBER</span><span class="bar"><i data-w="22"></i></span><span class="ct">58</span></div>
+        <div class="domain"><span class="name">SPACE</span><span class="bar"><i data-w="17"></i></span><span class="ct">44</span></div>
+        <div class="domain"><span class="name">SUSTAINMENT</span><span class="bar"><i data-w="14"></i></span><span class="ct">37</span></div>
+        <div class="domain"><span class="name">EMERGING TECH</span><span class="bar"><i data-w="13"></i></span><span class="ct">34</span></div>
+      </div>
+      <div class="pillars">
+        <div class="pillar reveal"><div class="k">Ownership-Mapped</div><p>Full corporate trees — parents, subsidiaries, PE holdings, and acquisition history — so you always know who really owns a capability.</p></div>
+        <div class="pillar reveal"><div class="k">Contract-Verified</div><p>Capabilities anchored to real contract activity and program history, not marketing copy.</p></div>
+        <div class="pillar reveal"><div class="k">AI-Maintained</div><p>Continuous enrichment keeps records current — leadership changes, acquisitions, and new programs surface automatically.</p></div>
+        <div class="pillar reveal"><div class="k">Community-Validated</div><p>Verified GovCon practitioners endorse, contest, and contribute records. Confidence scores compound with every validation.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="platform" style="border-top:1px solid var(--border);background:var(--bg-raised)">
+  <div class="wrap">
+    <div class="eyebrow">// The Platform</div>
+    <div class="rule"></div>
+    <h2>One operating picture for your <em>entire market.</em></h2>
+    <p class="lede">Six integrated nodes. Every signal, company, document, and connection in one place — filtered through an intelligence engine that learns your specific market position.</p>
+    <div class="nodes">
+      <div class="node reveal"><div class="id">01 / INTEL</div><h3>Intel</h3><p>Curated defense news plus Vanta-generated insights — AI analysis synthesized from cross-domain signals and personalized to your fingerprint.</p></div>
+      <div class="node reveal"><div class="id">02 / ATLAS</div><h3>Atlas</h3><p>The capability registry. Search companies by what they actually build, trace ownership trees, and track leadership and acquisition activity.</p></div>
+      <div class="node reveal"><div class="id">03 / OPS</div><h3>Ops</h3><p>Opportunity tracking built on live SAM.gov ingestion — solicitations matched against the capability landscape.</p></div>
+      <div class="node reveal"><div class="id">04 / EVENTS</div><h3>Events</h3><p>Industry events with Vanta insights, attendance intelligence, and built-in coordination for meetings that matter.</p></div>
+      <div class="node reveal"><div class="id">05 / CONNECT</div><h3>Connect</h3><p>A private network of verified GovCon practitioners — direct messaging, peer discovery, and shared intelligence.</p></div>
+      <div class="node reveal"><div class="id">06 / VAULT</div><h3>Vault</h3><p>Your private document workspace. Upload capability statements and market research; Ask Vanta reads them in context.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="eyebrow">// Access Tiers</div>
+    <div class="rule"></div>
+    <h2>Built for operators. Priced for <em>the mission.</em></h2>
+    <div class="tiers">
+      <div class="tier reveal">
+        <div class="tn">Scout</div>
+        <div class="price">$299</div><div class="per">PER MONTH</div>
+        <ul>
+          <li>Full Intel feed &amp; Daily Brief</li>
+          <li>ATLAS company registry access</li>
+          <li>Events &amp; Connect network</li>
+          <li>Ask Vanta AI analysis</li>
+        </ul>
+        <a class="btn" href="mailto:support@vantaintel.ai?subject=Vanta%20Access%20Request%20—%20Scout">Request Access</a>
+      </div>
+      <div class="tier reveal">
+        <div class="tn">Operator</div>
+        <div class="price">$799</div><div class="per">PER MONTH</div>
+        <ul>
+          <li>Everything in Scout</li>
+          <li>Capacity-level capability data</li>
+          <li>Capacity endorsements</li>
+          <li>Expanded AI analysis limits</li>
+        </ul>
+        <a class="btn" href="mailto:support@vantaintel.ai?subject=Vanta%20Access%20Request%20—%20Operator">Request Access</a>
+      </div>
+      <div class="tier feature reveal">
+        <div class="tn">Command</div>
+        <div class="price">$2,500</div><div class="per">PER MONTH</div>
+        <ul>
+          <li>Everything in Operator</li>
+          <li>Qualification-level intelligence</li>
+          <li>Qualification endorsements</li>
+          <li>Priority AI analysis</li>
+        </ul>
+        <a class="btn solid" href="mailto:support@vantaintel.ai?subject=Vanta%20Access%20Request%20—%20Command">Request Access</a>
+      </div>
+      <div class="tier reveal">
+        <div class="tn">Enterprise</div>
+        <div class="price">Custom</div><div class="per">SEAT LICENSING</div>
+        <ul>
+          <li>Seat licensing for teams</li>
+          <li>Full capability intelligence</li>
+          <li>Dedicated onboarding</li>
+          <li>Annual agreements</li>
+        </ul>
+        <a class="btn" href="mailto:support@vantaintel.ai?subject=Vanta%20Enterprise%20Inquiry">Contact Us</a>
+      </div>
+    </div>
+    <p class="annual-note">ANNUAL AGREEMENTS AVAILABLE ON ALL TIERS</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <div class="eyebrow" style="text-align:center">// Early Access</div>
+    <h2 style="margin-top:18px">Your competitors are reading yesterday's news.</h2>
+    <p class="lede" style="margin-left:auto;margin-right:auto;text-align:center">Vanta is onboarding a limited group of early operators from across the defense industrial base. Request access and we'll be in touch.</p>
+    <div class="hero-ctas">
+      <a class="btn solid" href="mailto:support@vantaintel.ai?subject=Vanta%20Early%20Access%20Request">Request Early Access</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span><span style="color:var(--gold)">VANTA</span> INTELLIGENCE LLC &nbsp;·&nbsp; RICHMOND, VA</span>
+    <span><a href="https://app.vantaintel.ai">PLATFORM</a> &nbsp;·&nbsp; <a href="mailto:support@vantaintel.ai">CONTACT</a></span>
+    <span>© 2026 VANTA INTELLIGENCE. ALL RIGHTS RESERVED.</span>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');
+  e.target.querySelectorAll('.bar i').forEach(b=>b.style.width=b.dataset.w+'%');
+  io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
