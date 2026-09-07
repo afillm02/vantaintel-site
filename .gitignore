@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.impeccable/
+.playwright-cli/
+.claude/skills/impeccable/scripts/bin/

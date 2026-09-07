@@ -1,6 +1,6 @@
 # PRODUCT.md — Vanta Intelligence (marketing site)
 
-This repository is the marketing site (`vantaintel-site`), served by GitHub Pages at www.vantaintel.ai.
+This repository is the marketing site (`vantaintel-site`), served by GitHub Pages at https://www.vantaintel.ai.
 Register: brand — spacious, cinematic, one idea per viewport. The product is the image; Apple-style restraint on a dark ground.
 
 Vanta is the intelligence layer for the defense industrial base: near-real-time market signal shaped to one reader, a living map of who builds what and who owns whom, a vetted practitioners' network, the calendar of who will be where, and a private intelligence matrix — with an analyst that learns the reader over time.
