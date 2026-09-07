@@ -106,9 +106,10 @@ h2 em{font-style:italic;color:var(--gold)}
 .pillar .k{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase}
 .pillar p{margin-top:8px;font-size:14.5px;color:var(--muted)}
 
-.nodes{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:60px}
-@media(max-width:860px){.nodes{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.nodes{grid-template-columns:1fr}}
+.nodes{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:60px}
+.node{grid-column:span 2}.node:nth-last-child(-n+2){grid-column:span 3} /* five cards: 3 + 2, no orphan cell */
+@media(max-width:860px){.nodes{grid-template-columns:1fr 1fr}.node,.node:nth-last-child(-n+2){grid-column:auto}.node:last-child{grid-column:1/-1}}
+@media(max-width:560px){.nodes{grid-template-columns:1fr}.node:last-child{grid-column:auto}}
 .node{background:var(--bg);padding:34px 28px;transition:background .3s;position:relative}
 .node:hover{background:var(--gold-faint)}
 .node .id{font-family:var(--mono);font-size:11px;letter-spacing:0.24em;color:var(--gold)}
@@ -152,7 +153,7 @@ footer{border-top:1px solid var(--border);padding:44px 0;font-family:var(--mono)
       <a href="#atlas">ATLAS</a>
       <a href="#platform">PLATFORM</a>
       <a href="#pricing">PRICING</a>
-      <a class="btn" href="https://app.vantaintel.ai">SIGN IN</a>
+      <a class="btn" href="https://app.vantaintel.ai/">SIGN IN</a>
     </div>
   </div>
 </nav>
@@ -167,10 +168,10 @@ footer{border-top:1px solid var(--border);padding:44px 0;font-family:var(--mono)
       <h1>See everything.<br><em>Miss nothing.</em></h1>
       <p class="hero-sub">Vanta is the intelligence layer for the defense industrial base — a living map of who builds what, who owns whom, and what's moving in your market, before it hits your competitors' radar.</p>
       <div class="hero-ctas">
-        <a class="btn solid" href="#pricing">Request Access</a>
+        <a class="btn solid" href="https://app.vantaintel.ai/?join=1">REQUEST ACCESS</a>
         <a class="btn" href="#atlas">Explore ATLAS</a>
       </div>
-      <p class="hero-note"><span class="dot">●</span>&nbsp; LIVE — MONITORING THE DIB 24/7</p>
+      <p class="hero-note">Invite-only beta. Members are admitted in small groups.</p>
     </div>
     <div class="readout reveal">
       <div class="readout-head"><span>SIGNAL FEED</span><span class="live">● LIVE</span></div>
@@ -200,16 +201,11 @@ footer{border-top:1px solid var(--border);padding:44px 0;font-family:var(--mono)
     <p class="lede">Static directories go stale the day they're published. ATLAS is different: a structured registry of defense capabilities — ownership-mapped, contract-verified, maintained by AI, and validated by the practitioners who actually work in this market.</p>
     <div class="atlas-grid">
       <div class="domain-list reveal">
-        <div class="domain"><span class="name">MISSILES &amp; MUNITIONS</span><span class="bar"><i data-w="100"></i></span><span class="ct">261</span></div>
-        <div class="domain"><span class="name">C4ISR</span><span class="bar"><i data-w="63"></i></span><span class="ct">164</span></div>
-        <div class="domain"><span class="name">AVIATION</span><span class="bar"><i data-w="56"></i></span><span class="ct">146</span></div>
-        <div class="domain"><span class="name">LAND SYSTEMS</span><span class="bar"><i data-w="48"></i></span><span class="ct">124</span></div>
-        <div class="domain"><span class="name">SERVICES</span><span class="bar"><i data-w="31"></i></span><span class="ct">80</span></div>
-        <div class="domain"><span class="name">NAVAL</span><span class="bar"><i data-w="27"></i></span><span class="ct">70</span></div>
-        <div class="domain"><span class="name">CYBER</span><span class="bar"><i data-w="22"></i></span><span class="ct">58</span></div>
-        <div class="domain"><span class="name">SPACE</span><span class="bar"><i data-w="17"></i></span><span class="ct">44</span></div>
-        <div class="domain"><span class="name">SUSTAINMENT</span><span class="bar"><i data-w="14"></i></span><span class="ct">37</span></div>
-        <div class="domain"><span class="name">EMERGING TECH</span><span class="bar"><i data-w="13"></i></span><span class="ct">34</span></div>
+        <div class="domain"><span class="name" style="width:72px">147</span><span style="color:var(--muted)">companies mapped</span></div>
+        <div class="domain"><span class="name" style="width:72px">1,024</span><span style="color:var(--muted)">capabilities</span></div>
+        <div class="domain"><span class="name" style="width:72px">1,600</span><span style="color:var(--muted)">external signals in the last 30 days</span></div>
+        <div class="domain"><span class="name" style="width:72px">52</span><span style="color:var(--muted)">verified upcoming events</span></div>
+        <div class="domain"><span style="color:var(--faint);font-size:11px;letter-spacing:0.1em">As of September 7, 2026</span></div>
       </div>
       <div class="pillars">
         <div class="pillar reveal"><div class="k">Ownership-Mapped</div><p>Full corporate trees — parents, subsidiaries, PE holdings, and acquisition history — so you always know who really owns a capability.</p></div>
@@ -226,14 +222,13 @@ footer{border-top:1px solid var(--border);padding:44px 0;font-family:var(--mono)
     <div class="eyebrow">// The Platform</div>
     <div class="rule"></div>
     <h2>One operating picture for your <em>entire market.</em></h2>
-    <p class="lede">Six integrated nodes. Every signal, company, document, and connection in one place — filtered through an intelligence engine that learns your specific market position.</p>
+    <p class="lede">Five integrated nodes. Every signal, company, document, and connection in one place — filtered through an intelligence engine that learns your specific market position.</p>
     <div class="nodes">
       <div class="node reveal"><div class="id">01 / INTEL</div><h3>Intel</h3><p>Curated defense news plus Vanta-generated insights — AI analysis synthesized from cross-domain signals and personalized to your fingerprint.</p></div>
       <div class="node reveal"><div class="id">02 / ATLAS</div><h3>Atlas</h3><p>The capability registry. Search companies by what they actually build, trace ownership trees, and track leadership and acquisition activity.</p></div>
-      <div class="node reveal"><div class="id">03 / OPS</div><h3>Ops</h3><p>Opportunity tracking built on live SAM.gov ingestion — solicitations matched against the capability landscape.</p></div>
-      <div class="node reveal"><div class="id">04 / EVENTS</div><h3>Events</h3><p>Industry events with Vanta insights, attendance intelligence, and built-in coordination for meetings that matter.</p></div>
-      <div class="node reveal"><div class="id">05 / CONNECT</div><h3>Connect</h3><p>A private network of verified GovCon practitioners — direct messaging, peer discovery, and shared intelligence.</p></div>
-      <div class="node reveal"><div class="id">06 / VAULT</div><h3>Vault</h3><p>Your private document workspace. Upload capability statements and market research; Ask Vanta reads them in context.</p></div>
+      <div class="node reveal"><div class="id">03 / EVENTS</div><h3>Events</h3><p>Industry events with Vanta insights, attendance intelligence, and built-in coordination for meetings that matter.</p></div>
+      <div class="node reveal"><div class="id">04 / CONNECT</div><h3>Connect</h3><p>A private network of verified GovCon practitioners — direct messaging, peer discovery, and shared intelligence.</p></div>
+      <div class="node reveal"><div class="id">05 / VAULT</div><h3>Vault</h3><p>Your private document workspace. Upload capability statements and market research; Ask Vanta reads them in context.</p></div>
     </div>
   </div>
 </section>
@@ -245,51 +240,53 @@ footer{border-top:1px solid var(--border);padding:44px 0;font-family:var(--mono)
     <h2>Built for operators. Priced for <em>the mission.</em></h2>
     <div class="tiers">
       <div class="tier reveal">
-        <div class="tn">Scout</div>
-        <div class="price">$299</div><div class="per">PER MONTH</div>
+        <div class="tn">Free</div>
+        <div class="price">Free</div><div class="per">ALWAYS</div>
         <ul>
-          <li>Full Intel feed &amp; Daily Brief</li>
-          <li>ATLAS company registry access</li>
-          <li>Events &amp; Connect network</li>
-          <li>Ask Vanta AI analysis</li>
+          <li>The feed and the daily brief</li>
+          <li>Connect and Events</li>
+          <li>ATLAS browse and search</li>
+          <li>Attest your own company</li>
+          <li>Ask Vanta 10 a day, Vault 5 documents</li>
         </ul>
-        <a class="btn" href="mailto:support@vantaintel.ai?subject=Vanta%20Access%20Request%20—%20Scout">Request Access</a>
+        <a class="btn" href="https://app.vantaintel.ai/?join=1">REQUEST ACCESS</a>
       </div>
       <div class="tier reveal">
-        <div class="tn">Operator</div>
-        <div class="price">$799</div><div class="per">PER MONTH</div>
+        <div class="tn">Pro</div>
+        <div class="price">$99</div><div class="per">PER MONTH, OR $990 PER YEAR</div>
         <ul>
-          <li>Everything in Scout</li>
-          <li>Capacity-level capability data</li>
-          <li>Capacity endorsements</li>
-          <li>Expanded AI analysis limits</li>
+          <li>Full Ask Vanta and room briefs</li>
+          <li>Vault, 100 documents</li>
+          <li>ATLAS depth: ownership trees, contract history, capacity intelligence</li>
+          <li>Saved searches and alerts</li>
+          <li>Priority AI</li>
         </ul>
-        <a class="btn" href="mailto:support@vantaintel.ai?subject=Vanta%20Access%20Request%20—%20Operator">Request Access</a>
+        <a class="btn" href="https://app.vantaintel.ai/?join=1">REQUEST ACCESS</a>
       </div>
       <div class="tier feature reveal">
-        <div class="tn">Command</div>
-        <div class="price">$2,500</div><div class="per">PER MONTH</div>
+        <div class="tn">Company</div>
+        <div class="price">$12,000</div><div class="per">AND UP PER YEAR, 5 TO 20 SEATS</div>
         <ul>
-          <li>Everything in Operator</li>
-          <li>Qualification-level intelligence</li>
-          <li>Qualification endorsements</li>
-          <li>Priority AI analysis</li>
+          <li>5 to 20 seats</li>
+          <li>A verified ATLAS storefront: claimed profile and verified badge</li>
+          <li>Published capacity attestation</li>
+          <li>Priority in search</li>
+          <li>Who-viewed-you analytics</li>
         </ul>
-        <a class="btn solid" href="mailto:support@vantaintel.ai?subject=Vanta%20Access%20Request%20—%20Command">Request Access</a>
+        <a class="btn solid" href="https://app.vantaintel.ai/?join=1">REQUEST ACCESS</a>
       </div>
       <div class="tier reveal">
         <div class="tn">Enterprise</div>
-        <div class="price">Custom</div><div class="per">SEAT LICENSING</div>
+        <div class="price">Custom</div><div class="per">ANNUAL AGREEMENT</div>
         <ul>
-          <li>Seat licensing for teams</li>
-          <li>Full capability intelligence</li>
-          <li>Dedicated onboarding</li>
-          <li>Annual agreements</li>
+          <li>Unlimited seats</li>
+          <li>Export and API</li>
+          <li>SSO</li>
         </ul>
-        <a class="btn" href="mailto:support@vantaintel.ai?subject=Vanta%20Enterprise%20Inquiry">Contact Us</a>
+        <a class="btn" href="mailto:support@vantaintel.ai?subject=Vanta%20Enterprise%20Inquiry">CONTACT VANTA</a>
       </div>
     </div>
-    <p class="annual-note">ANNUAL AGREEMENTS AVAILABLE ON ALL TIERS</p>
+    <p class="annual-note">Founding members: anyone admitted during the beta keeps Pro free through June 30, 2027.<br>Company and Enterprise are annual agreements.</p>
   </div>
 </section>
 
@@ -299,7 +296,7 @@ footer{border-top:1px solid var(--border);padding:44px 0;font-family:var(--mono)
     <h2 style="margin-top:18px">Your competitors are reading yesterday's news.</h2>
     <p class="lede" style="margin-left:auto;margin-right:auto;text-align:center">Vanta is onboarding a limited group of early operators from across the defense industrial base. Request access and we'll be in touch.</p>
     <div class="hero-ctas">
-      <a class="btn solid" href="mailto:support@vantaintel.ai?subject=Vanta%20Early%20Access%20Request">Request Early Access</a>
+      <a class="btn solid" href="https://app.vantaintel.ai/?join=1">REQUEST ACCESS</a>
     </div>
   </div>
 </section>
